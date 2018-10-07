@@ -15,14 +15,14 @@ import java.util.ArrayList;
  *
  * @author qaiser
  */
-public class Studentform {
+public class StudentController {
 
   
     public String name;
     public String phone;
     public String email;
 
-    public Studentform(String email, String name, String phone) {
+    public StudentController(String email, String name, String phone) {
         this.name = name;
         this.phone = phone;
         this.email =email;

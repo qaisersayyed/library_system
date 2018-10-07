@@ -6,7 +6,7 @@
 package library;
 
 
-import Controller.Studentform;
+import Controller.StudentController;
 import Database.Database;
 import java.sql.Connection;
 import javafx.application.Application;
@@ -111,7 +111,7 @@ public class Student extends Application {
                     
                     Database d = new Database();
                     Connection con = d.openConnection();
-                    Studentform stu = new Studentform(name,email,phone);
+                    StudentController stu = new StudentController(name,email,phone);
                     stu.insertstudent(con);
                     
                     showAlert();
