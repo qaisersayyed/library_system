@@ -36,6 +36,6 @@ public void insertstudent(Connection con) throws SQLException {
      ps.setString(3,this.phone);
      ps.executeUpdate();
      ps.close();
-        
+
     }
 }
