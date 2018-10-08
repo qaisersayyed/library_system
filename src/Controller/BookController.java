@@ -20,7 +20,7 @@ public class BookController {
     public String author;
     public String publisher;
 
-    public BookController(String name, String isbn, String author,String publishher) {
+    public BookController(String name, String isbn, String author,String publisher) {
         this.name = name;
         this.isbn= isbn;
         this.author = author;
@@ -28,12 +28,12 @@ public class BookController {
     }
 
 public void insertbook(Connection con) throws SQLException {
-     String sql ="insert into student values(null,?,?,?,?);";
+     String sql ="insert into book values(null,?,?,?,?);";
      PreparedStatement ps = con.prepareStatement(sql);
      ps.setString(1,this.name);
      ps.setString(2, this.isbn);
      ps.setString(3,this.author);
-     ps.setString(3,this.publisher);
+     ps.setString(4,this.publisher);
      ps.executeUpdate();
      ps.close();
 
