@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 08, 2018 at 09:29 AM
+-- Generation Time: Oct 08, 2018 at 09:36 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -63,7 +63,7 @@ CREATE TABLE `borrow` (
 --
 
 INSERT INTO `borrow` (`Borrow_id`, `student_id`, `book_id`, `borrowed_on`, `returned_on`, `status`) VALUES
-(1, 1, 1, '2018-10-08 07:27:06', '2018-10-08 07:27:50', 1);
+(2, 1, 1, '2018-10-08 07:35:53', '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -99,7 +99,9 @@ ALTER TABLE `book`
 -- Indexes for table `borrow`
 --
 ALTER TABLE `borrow`
-  ADD PRIMARY KEY (`Borrow_id`);
+  ADD PRIMARY KEY (`Borrow_id`),
+  ADD KEY `s1` (`student_id`),
+  ADD KEY `b1` (`book_id`);
 
 --
 -- Indexes for table `student`
@@ -121,13 +123,24 @@ ALTER TABLE `book`
 -- AUTO_INCREMENT for table `borrow`
 --
 ALTER TABLE `borrow`
-  MODIFY `Borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Borrow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
   MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `borrow`
+--
+ALTER TABLE `borrow`
+  ADD CONSTRAINT `b1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
+  ADD CONSTRAINT `s1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
