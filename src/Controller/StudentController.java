@@ -22,7 +22,7 @@ public class StudentController {
     public String phone;
     public String email;
 
-    public StudentController(String email, String name, String phone) {
+    public StudentController( String name,String email, String phone) {
         this.name = name;
         this.phone = phone;
         this.email =email;
@@ -36,6 +36,6 @@ public void insertstudent(Connection con) throws SQLException {
      ps.setString(3,this.phone);
      ps.executeUpdate();
      ps.close();
-        
+
     }
 }
