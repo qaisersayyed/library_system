@@ -3,8 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/shubham/NetBeansProjects/library/src/Controller/BookController.java</file>
             <file>file:/home/shubham/NetBeansProjects/library/src/Controller/BorrowController.java</file>
+=======
+            <file>file:/home/qaiser/NetBeansProjects/Library/src/library/Book.java</file>
+            <file>file:/home/qaiser/NetBeansProjects/Library/src/library/StudentTable.java</file>
+            <file>file:/home/qaiser/NetBeansProjects/Library/src/Database/StudentController.java</file>
+            <file>file:/home/qaiser/NetBeansProjects/Library/src/library/Student.java</file>
+            <file>file:/home/qaiser/NetBeansProjects/Library/src/library/Main.java</file>
+>>>>>>> b64359dff483f224858d3cb9d2fd13064cf13794
         </group>
     </open-files>
 </project-private>
