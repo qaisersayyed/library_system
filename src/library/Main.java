@@ -42,11 +42,15 @@ public class Main extends Application {
        
         
         
-        Student ss = new Student();
-        GridPane gridPane = ss.getGp();
+        Student s = new Student();
+        GridPane studentgp = s.getGp();
+        
+        Book b = new Book();
+        GridPane bookgp = b.getGp();
         
         //Label test = new Label("testtt");
-        tab1.setContent(gridPane);
+        tab1.setContent(studentgp);
+        tab2.setContent(bookgp);
         // create a scene 
      //   Scene s = new Scene(gridPane, 500, 300);
        Scene sc = new Scene(tp, 500, 300); 
