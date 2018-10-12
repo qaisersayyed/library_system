@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage; 
 import static javafx.scene.control.TabPane.TabClosingPolicy.UNAVAILABLE;
 import static javafx.application.Application.launch;
+import javafx.scene.paint.Color;
 /**
  *
  * @author qaiser
@@ -25,7 +26,7 @@ public class Main extends Application {
         TabPane tp = new TabPane();
         Tab tab1 = new Tab();
         Tab tab2 = new Tab();
-            Tab tab3 = new Tab();
+        Tab tab3 = new Tab();
         Tab tab4 = new Tab();
         
         tab1.setText("      Student     ");
@@ -43,10 +44,10 @@ public class Main extends Application {
         
         
         StudentForm s = new StudentForm();
-        GridPane studentgp = s.getGp();
+        HBox studenthb = s.getHb();
         
         BookForm b = new BookForm();
-        GridPane bookgp = b.getGp();
+        HBox bookhb = b.getHb();
         
         BorrowForm bf = new BorrowForm();
         GridPane borrowgp = bf.getGpborrow();
@@ -55,13 +56,13 @@ public class Main extends Application {
         GridPane returngp = rf.getGpreturn();
         
         
-        tab1.setContent(studentgp);
-        tab2.setContent(bookgp);
+        tab1.setContent(studenthb);
+        tab2.setContent(bookhb);
         tab3.setContent(borrowgp);
         tab4.setContent(returngp);
        
-       Scene sc = new Scene(tp, 500, 300); 
-      //  tp.tabClosingPolicyProperty(TabClosingPolicy.UNAVAILABLE);
+       Scene sc = new Scene(tp, 700,240,Color.DARKGRAY); 
+
        primaryStage.setTitle("LIBRARY-Qaiser_Shubham");
        tp.setTabClosingPolicy(UNAVAILABLE);
       

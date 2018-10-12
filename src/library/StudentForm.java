@@ -12,28 +12,25 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+
 /**
  *
  * @author qaiser
  */
 public class StudentForm{
-
-    public StudentForm(String name, String email, String phone) {
-        
-    }
-
-    
-
-    
     
     private void showAlert() {
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -72,14 +69,6 @@ public class StudentForm{
 
     public void setButton1(Button button1) {
         this.button1 = button1;
-    }
-
-    public Button getButton2() {
-        return button2;
-    }
-
-    public void setButton2(Button button2) {
-        this.button2 = button2;
     }
 
     public Label getNameplate() {
@@ -137,10 +126,15 @@ public class StudentForm{
     public void setPhone1(TextField phone1) {
         this.phone1 = phone1;
     }
-    
+    public HBox getHb() {
+        return hb;
+    }
+
+    public void setHb(HBox hb) {
+        this.hb = hb;
+    }
     GridPane gp;
     Button button1 ;
-    Button button2 ;
     Label nameplate;
     Label name;
     Label email;
@@ -148,12 +142,15 @@ public class StudentForm{
     TextField name1;
     TextField email1;
     TextField phone1;
+    HBox hb;
+
+    
                      
-    public StudentForm(){
+    public StudentForm() throws ClassNotFoundException, SQLException{
        
         
         button1 = new Button("Submit");
-        button2 = new Button("Display Student");
+       
         nameplate =new Label("ADD STUDENT");
         name = new Label("Name");
         email = new Label("Email");
@@ -163,8 +160,26 @@ public class StudentForm{
         phone1 = new TextField();
         
      
+        //Table
+        TableView t = new TableView();
+        Database d = new Database();
+        Connection con = d.openConnection();
+        ObservableList<Student> studentarray = Student.getstudent(con);
         
-
+        TableColumn <String,Student> tname = new TableColumn("name");
+        tname.setCellValueFactory(new PropertyValueFactory("name"));
+        
+        TableColumn <Integer,Student> temail = new TableColumn("email");
+        temail.setCellValueFactory(new PropertyValueFactory("email"));
+        
+        TableColumn <Integer,Student> tphone = new TableColumn("phone");
+        tphone.setCellValueFactory(new PropertyValueFactory("phone"));
+        
+        t.setItems(studentarray);
+        t.getColumns().addAll(tname,temail,tphone);
+        t.setPrefSize(350,300);
+        
+     //   HBox hb= new HBox();
         gp = new GridPane();
         
         gp.add(nameplate,2,1);
@@ -175,27 +190,18 @@ public class StudentForm{
         gp.add(phone, 2, 4);
         gp.add(phone1, 3, 4);
         gp.add(button1, 2, 5);
-        gp.add(button2, 3, 5);
+
+       // gp.add(t, 7, 1);
+        hb = new HBox(gp,t);
+       
+        hb.setSpacing(20);
         
         
        
 
         gp.setHgap(10);
         gp.setVgap(10);
-        gp.setAlignment(Pos.CENTER);
-        //gridPane.setPadding(new Insets(40, 40, 40, 40));
-   //   Scene gpscene = new Scene(gridPane,500,300);
-       //test
-     
-   
-        
-        button2.setOnAction(new EventHandler<ActionEvent>(){
-            @Override
-            public void handle(ActionEvent t) {
-                StudentTable table = new StudentTable();
-            }
-            
-        });
+      //gp.setAlignment(Pos.TOP_LEFT);
        
         button1.setOnAction(new EventHandler<ActionEvent>() {
             
