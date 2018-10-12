@@ -115,8 +115,8 @@ public class BorrowForm {
         
         public BorrowForm(){
             
-            button1 = new Button("Submit");
-            button =new Label("ADD Record");
+            button1 = new Button("Borrow");
+            button =new Label("Borrow book");
             student_id = new Label("Student ID");
             book_id = new Label("Book ID");
             studentid = new TextField();
