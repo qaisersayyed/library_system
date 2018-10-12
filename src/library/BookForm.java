@@ -5,7 +5,7 @@
  */
 package library;
 
-import Database.BookController;
+import Database.Book;
 import Database.Database;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -24,7 +24,7 @@ import javafx.scene.layout.GridPane;
  *
  * @author shubham
  */
-public class Book {
+public class BookForm {
     public void showAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Alert");
@@ -150,7 +150,7 @@ public class Book {
         
     
     
-  public Book(){
+  public BookForm(){
         
         button1 = new Button("Submit");
         nameplate =new Label("ADD BOOK");
@@ -211,7 +211,7 @@ public class Book {
                     
                     Database d = new Database();
                     Connection con = d.openConnection();
-                    BookController book = new BookController(name,isbn,author,publisher);
+                    Book book = new Book(name,isbn,author,publisher);
                     book.insertbook(con);
                     
                     showAlert();

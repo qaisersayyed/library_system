@@ -45,7 +45,7 @@ public class Main extends Application {
         Student s = new Student();
         GridPane studentgp = s.getGp();
         
-        Book b = new Book();
+        BookForm b = new BookForm();
         GridPane bookgp = b.getGp();
         
         //Label test = new Label("testtt");

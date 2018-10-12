@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,22 +13,21 @@ import java.sql.SQLException;
  *
  * @author shubham
  */
-public class BorrowController {
-    
+public class Book {
     
     public String name;
     public String isbn;
     public String author;
     public String publisher;
 
-    public BorrowController(String name, String isbn, String author,String publisher) {
+    public Book(String name, String isbn, String author,String publisher) {
         this.name = name;
         this.isbn= isbn;
         this.author = author;
         this.publisher = publisher;
     }
 
-public void insertborrow(Connection con) throws SQLException {
+public void insertbook(Connection con) throws SQLException {
      String sql ="insert into book values(null,?,?,?,?);";
      PreparedStatement ps = con.prepareStatement(sql);
      ps.setString(1,this.name);
@@ -39,5 +38,5 @@ public void insertborrow(Connection con) throws SQLException {
      ps.close();
 
     }
-    
 }
+
