@@ -34,6 +34,16 @@ public class Borrow {
      ps.close();
 
     }
+    public void insertreturn(Connection con) throws SQLException {
+     String sql ="update borrow set status=1 where student_id=? and book_id=?;";
+     PreparedStatement ps = con.prepareStatement(sql);
+     ps.setInt(1,this.s_id);
+     ps.setInt(2, this.b_id);
+    // ps.setInt(3, this.status);
+     ps.executeUpdate();
+     ps.close();
+
+    }
     
     
 }

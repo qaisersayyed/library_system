@@ -5,7 +5,6 @@
  */
 package library;
 
-
 import Database.Borrow;
 import Database.Database;
 import java.sql.Connection;
@@ -25,8 +24,8 @@ import javafx.scene.layout.GridPane;
  *
  * @author shubham
  */
-public class BorrowForm {
-    public void showAlert() {
+public class ReturnForm {
+     public void showAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Alert");
  
@@ -47,96 +46,39 @@ public class BorrowForm {
  
         alert.showAndWait();
     }
-
-    public GridPane getGpborrow() {
-        return gpborrow;
-    }
-
-    public void setGpborrow(GridPane gpborrow) {
-        this.gpborrow = gpborrow;
-    }
-
-    public Button getButton1() {
-        return button1;
-    }
-
-    public void setButton1(Button button1) {
-        this.button1 = button1;
-    }
-
-    public Label getButton() {
-        return button;
-    }
-
-    public void setButton(Label button) {
-        this.button = button;
-    }
-
-    public Label getStudent_id() {
-        return student_id;
-    }
-
-    public void setStudent_id(Label student_id) {
-        this.student_id = student_id;
-    }
-
-    public Label getBook_id() {
-        return book_id;
-    }
-
-    public void setBook_id(Label book_id) {
-        this.book_id = book_id;
-    }
-
-    public TextField getStudentid() {
-        return studentid;
-    }
-
-    public void setStudentid(TextField studentid) {
-        this.studentid = studentid;
-    }
-
-    public TextField getBookid() {
-        return bookid;
-    }
-
-    public void setBookid(TextField bookid) {
-        this.bookid = bookid;
-    }
     
-    
-        GridPane gpborrow;
+        GridPane gpreturn;
         Button button1;
         Label button;
         Label student_id;
         Label book_id;
         TextField studentid;
         TextField bookid;
+    
+    public ReturnForm(){
         
-        public BorrowForm(){
-            
-            button1 = new Button("Submit");
-            button =new Label("ADD Record");
-            student_id = new Label("Student ID");
-            book_id = new Label("Book ID");
-            studentid = new TextField();
-            bookid = new TextField();
-            
-            
-            gpborrow= new GridPane();
+        button1 = new Button("Submit");
+        button =new Label("ADD Record");
+        student_id = new Label("Student ID");
+        book_id = new Label("Book ID");
+        studentid = new TextField();
+        bookid = new TextField();
+
+
+        gpreturn= new GridPane();
+
+        gpreturn.add(button,2,1);
+        gpreturn.add(student_id, 2, 2);
+        gpreturn.add(studentid, 3, 2);
+        gpreturn.add(book_id, 2, 3);
+        gpreturn.add(bookid, 3, 3);
+        gpreturn.add(button1, 2, 4);
+
+        gpreturn.setHgap(10);
+        gpreturn.setVgap(10);
+        gpreturn.setAlignment(Pos.CENTER);
         
-            gpborrow.add(button,2,1);
-            gpborrow.add(student_id, 2, 2);
-            gpborrow.add(studentid, 3, 2);
-            gpborrow.add(book_id, 2, 3);
-            gpborrow.add(bookid, 3, 3);
-            gpborrow.add(button1, 2, 4);
-           
-            gpborrow.setHgap(10);
-            gpborrow.setVgap(10);
-            gpborrow.setAlignment(Pos.CENTER);
-            
-             button1.setOnAction(new EventHandler<ActionEvent>() {
+          button1.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
             public void handle(ActionEvent event) {
@@ -163,7 +105,7 @@ public class BorrowForm {
                     Database d = new Database();
                     Connection con = d.openConnection();
                     Borrow borrow = new Borrow(s_id,b_id);
-                    borrow.insertborrow(con);
+                    borrow.insertreturn(con);
                     
                     showAlert();
                     
@@ -182,6 +124,6 @@ public class BorrowForm {
         });
         }
         
-    
-    
-}
+        
+    }
+
