@@ -10,10 +10,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.*; 
 import javafx.scene.control.*; 
 import javafx.stage.Stage; 
-
-import static javafx.application.Application.launch;
-import javafx.scene.control.TabPane.TabClosingPolicy;
 import static javafx.scene.control.TabPane.TabClosingPolicy.UNAVAILABLE;
+import static javafx.application.Application.launch;
 /**
  *
  * @author qaiser
@@ -44,7 +42,7 @@ public class Main extends Application {
        
         
         
-        Student s = new Student();
+        StudentForm s = new StudentForm();
         GridPane studentgp = s.getGp();
         
         BookForm b = new BookForm();
@@ -64,6 +62,7 @@ public class Main extends Application {
        
        Scene sc = new Scene(tp, 500, 300); 
       //  tp.tabClosingPolicyProperty(TabClosingPolicy.UNAVAILABLE);
+       primaryStage.setTitle("LIBRARY-Qaiser_Shubham");
        tp.setTabClosingPolicy(UNAVAILABLE);
       
         primaryStage.setScene(sc); 

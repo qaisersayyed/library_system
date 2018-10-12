@@ -6,7 +6,7 @@
 package library;
 
 import Database.Database;
-import Database.StudentController;
+import Database.Student;
 import static com.mysql.jdbc.StringUtils.getBytes;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import static com.mysql.jdbc.StringUtils.getBytes;
 
 /**
  *
@@ -29,8 +30,8 @@ public class StudentTable extends Application{
     public void start(Stage stage) throws Exception {
         Database d = new  Database();
         Connection con = d.openConnection();
-        StudentController.getstudent(con);
-        ArrayList<StudentController> s=StudentController.getstudent(con);
+        Student.getstudent(con);
+        ArrayList<Student> s=Student.getstudent(con);
         Label l =new Label("null");
         for (int i=0;i<s.size();i++){
             System.out.println(s.get(i).getName());

@@ -11,14 +11,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
-import library.Student;
+import library.StudentForm;
 import library.StudentTable;
 
 /**
  *
  * @author qaiser
  */
-public class StudentController {
+public class Student {
 
     public int id;
 
@@ -26,7 +26,7 @@ public class StudentController {
     public String phone;
     public String email;
 
-    public StudentController(String name,String email, String phone) {
+    public Student(String name,String email, String phone) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -69,8 +69,8 @@ public void insertstudent(Connection con) throws SQLException {
      ps.close();
 
     }
-//Student s = new Student();
-public static ArrayList<StudentController> getstudent(Connection con) throws SQLException{
+//Student s = new StudentForm();
+public static ArrayList<Student> getstudent(Connection con) throws SQLException{
     ArrayList studentArray = new ArrayList();
     String sql = "select * from student;";
     PreparedStatement ps =con.prepareStatement(sql);
@@ -80,7 +80,7 @@ public static ArrayList<StudentController> getstudent(Connection con) throws SQL
         String name = rs.getString(1);
         String email = rs.getString(2);
         String phone = rs.getString(3);
-        StudentController s = new StudentController(name,email,phone);
+        Student s = new Student(name,email,phone);
         studentArray.add(s);
         
        // studentArray.add(name,emailphone);

@@ -170,10 +170,10 @@ public class ReturnForm {
                 } 
             }
                 catch (SQLException ex) {
-                    Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(StudentForm.class.getName()).log(Level.SEVERE, null, ex);
                 } 
                 catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(StudentForm.class.getName()).log(Level.SEVERE, null, ex);
                 }
 }   
              

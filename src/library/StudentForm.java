@@ -7,7 +7,7 @@ package library;
 
 
 import Database.Database;
-import Database.StudentController;
+import Database.Student;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -25,9 +25,9 @@ import javafx.scene.control.Alert.AlertType;
  *
  * @author qaiser
  */
-public class Student{
+public class StudentForm{
 
-    public Student(String name, String email, String phone) {
+    public StudentForm(String name, String email, String phone) {
         
     }
 
@@ -149,18 +149,18 @@ public class Student{
     TextField email1;
     TextField phone1;
                      
-    public Student(){
+    public StudentForm(){
        
         
-        Button button1 = new Button("Submit");
-        Button button2 = new Button("Display Student");
-        Label nameplate =new Label("ADD STUDENT");
-        Label name = new Label("Name");
-        Label email = new Label("Email");
-        Label phone = new Label("phone");
-        TextField name1 = new TextField();
-        TextField email1 = new TextField();
-        TextField phone1 = new TextField();
+        button1 = new Button("Submit");
+        button2 = new Button("Display Student");
+        nameplate =new Label("ADD STUDENT");
+        name = new Label("Name");
+        email = new Label("Email");
+        phone = new Label("phone");
+        name1 = new TextField();
+        email1 = new TextField();
+        phone1 = new TextField();
         
      
         
@@ -217,7 +217,7 @@ public class Student{
                     
                     Database d = new Database();
                     Connection con = d.openConnection();
-                    StudentController stu = new StudentController(name,email,phone);
+                    Student stu = new Student(name,email,phone);
                     stu.insertstudent(con);
                     
                     showAlert();
@@ -226,10 +226,10 @@ public class Student{
                 } 
             }
                 catch (SQLException ex) {
-                    Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(StudentForm.class.getName()).log(Level.SEVERE, null, ex);
                 } 
                 catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(StudentForm.class.getName()).log(Level.SEVERE, null, ex);
                 }
 }   
              
