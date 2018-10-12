@@ -7,10 +7,13 @@ package library;
 
 import Database.Database;
 import Database.StudentController;
+import static com.mysql.jdbc.StringUtils.getBytes;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -28,12 +31,18 @@ public class StudentTable extends Application{
         Connection con = d.openConnection();
         StudentController.getstudent(con);
         ArrayList<StudentController> s=StudentController.getstudent(con);
+        Label l =new Label("null");
         for (int i=0;i<s.size();i++){
             System.out.println(s.get(i).getName());
             System.out.println(s.get(i).getPhone());
             System.out.println(s.get(i).getEmail());
+            
         }
-        
+    //Label l =new Label("null");
+    //l.setText(name);
+    Scene sc = new Scene(l, 500, 300); 
+    stage.setScene(sc); 
+    stage.show(); 
         
     }
    

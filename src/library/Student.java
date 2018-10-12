@@ -182,7 +182,7 @@ public class Student{
 
         gp.setHgap(10);
         gp.setVgap(10);
-        gp.setAlignment(Pos.CENTER_LEFT);
+        gp.setAlignment(Pos.CENTER);
         //gridPane.setPadding(new Insets(40, 40, 40, 40));
    //   Scene gpscene = new Scene(gridPane,500,300);
        //test

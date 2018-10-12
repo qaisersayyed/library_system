@@ -12,6 +12,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage; 
 
 import static javafx.application.Application.launch;
+import javafx.scene.control.TabPane.TabClosingPolicy;
+import static javafx.scene.control.TabPane.TabClosingPolicy.UNAVAILABLE;
 /**
  *
  * @author qaiser
@@ -48,13 +50,17 @@ public class Main extends Application {
         Book b = new Book();
         GridPane bookgp = b.getGp();
         
-        //Label test = new Label("testtt");
+       
         tab1.setContent(studentgp);
         tab2.setContent(bookgp);
-        // create a scene 
-     //   Scene s = new Scene(gridPane, 500, 300);
+       
        Scene sc = new Scene(tp, 500, 300); 
-  
+       // tp.tabClosingPolicyProperty(TabClosingPolicy.UNAVAILABLE);
+       
+        tab1.setOnCloseRequest(e -> e.consume());
+        tab2.setOnCloseRequest(e -> e.consume());
+        tab3.setOnCloseRequest(e -> e.consume());
+        tab4.setOnCloseRequest(e -> e.consume());
         // set the scene 
         primaryStage.setScene(sc); 
   
