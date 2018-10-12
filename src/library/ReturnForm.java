@@ -114,8 +114,8 @@ public class ReturnForm {
     
     public ReturnForm(){
         
-        button1 = new Button("Submit");
-        button =new Label("ADD Record");
+        button1 = new Button("Return");
+        button =new Label("RETURN BOOK");
         student_id = new Label("Student ID");
         book_id = new Label("Book ID");
         studentid = new TextField();
