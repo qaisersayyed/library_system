@@ -6,7 +6,7 @@
 package library;
 
 import Controller.BookController;
-import Controller.StudentController;
+import Database.StudentController;
 import Database.Database;
 import java.sql.Connection;
 import java.sql.SQLException;

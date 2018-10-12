@@ -4,21 +4,25 @@
  * and open the template in the editor.
  */
 package library;
+
 import javafx.application.Application; 
 import javafx.scene.Scene; 
+import javafx.scene.layout.*; 
 import javafx.scene.control.*; 
 import javafx.stage.Stage; 
-import library.Student.*;
+
+import static javafx.application.Application.launch;
 /**
  *
  * @author qaiser
  */
-public class Main extends  Application {
-
-    @Override
-    public void start(Stage stage) throws Exception {
+public class Main extends Application {
+    
+    
+      @Override
+    public void start(Stage primaryStage) throws Exception {
         
-         TabPane tp = new TabPane();
+        TabPane tp = new TabPane();
         Tab tab1 = new Tab();
         Tab tab2 = new Tab();
         Tab tab3 = new Tab();
@@ -36,19 +40,25 @@ public class Main extends  Application {
         tp.getTabs().add(tab3);
         tp.getTabs().add(tab4);
        
+        
+        
+        Student ss = new Student();
+        GridPane gridPane = ss.getGp();
+        
+        //Label test = new Label("testtt");
+        tab1.setContent(gridPane);
         // create a scene 
-        Scene sc = new Scene(tp, 500, 300); 
+     //   Scene s = new Scene(gridPane, 500, 300);
+       Scene sc = new Scene(tp, 500, 300); 
   
         // set the scene 
-        stage.setScene(sc); 
+        primaryStage.setScene(sc); 
   
-        stage.show(); 
-    } 
-     public static void main(String args[]) 
-    { 
-        // launch the application 
-        launch(args); 
-    } 
+        primaryStage.show(); 
+        
+  }
+    public static void main(String[] args) {
+        launch(args);
     }
-   
-
+    
+}
