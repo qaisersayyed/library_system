@@ -13,21 +13,22 @@ import java.sql.SQLException;
  *
  * @author shubham
  */
-public class BookController {
+public class BorrowController {
+    
     
     public String name;
     public String isbn;
     public String author;
     public String publisher;
 
-    public BookController(String name, String isbn, String author,String publisher) {
+    public BorrowController(String name, String isbn, String author,String publisher) {
         this.name = name;
         this.isbn= isbn;
         this.author = author;
         this.publisher = publisher;
     }
 
-public void insertbook(Connection con) throws SQLException {
+public void insertborrow(Connection con) throws SQLException {
      String sql ="insert into book values(null,?,?,?,?);";
      PreparedStatement ps = con.prepareStatement(sql);
      ps.setString(1,this.name);
@@ -38,5 +39,5 @@ public void insertbook(Connection con) throws SQLException {
      ps.close();
 
     }
+    
 }
-
