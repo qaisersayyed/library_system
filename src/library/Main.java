@@ -47,12 +47,15 @@ public class Main extends Application {
         Student s = new Student();
         GridPane studentgp = s.getGp();
         
-        Book b = new Book();
+        BookForm b = new BookForm();
         GridPane bookgp = b.getGp();
         
-       
+        BorrowForm bf = new BorrowForm();
+        GridPane borrowgp = bf.getGpborrow();
+        
         tab1.setContent(studentgp);
         tab2.setContent(bookgp);
+        tab3.setContent(borrowgp);
        
        Scene sc = new Scene(tp, 500, 300); 
        // tp.tabClosingPolicyProperty(TabClosingPolicy.UNAVAILABLE);
