@@ -26,12 +26,38 @@ public class StudentController {
     public String phone;
     public String email;
 
-    public StudentController( String name,String email, String phone) {
+    public StudentController(String name,String email, String phone) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email =email;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
 
 public void insertstudent(Connection con) throws SQLException {
      String sql ="insert into student values(null,?,?,?);";
@@ -44,9 +70,9 @@ public void insertstudent(Connection con) throws SQLException {
 
     }
 //Student s = new Student();
-public static ObservableList getstudent(Connection con) throws SQLException{
+public static ArrayList<StudentController> getstudent(Connection con) throws SQLException{
     ArrayList studentArray = new ArrayList();
-    String sql = "select * from students;";
+    String sql = "select * from student;";
     PreparedStatement ps =con.prepareStatement(sql);
     ResultSet rs = ps.executeQuery();
     while (rs.next()){
@@ -54,14 +80,18 @@ public static ObservableList getstudent(Connection con) throws SQLException{
         String name = rs.getString(1);
         String email = rs.getString(2);
         String phone = rs.getString(3);
+        StudentController s = new StudentController(name,email,phone);
+        studentArray.add(s);
         
        // studentArray.add(name,emailphone);
         
     }
     rs.close();
     ps.close();
-    return (ObservableList<Student>) studentArray;
-    
+    //return (ObservableList<Student>) studentArray;
+    return studentArray;
     }
+
+    
 
 }

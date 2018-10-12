@@ -27,6 +27,12 @@ import javafx.scene.control.Alert.AlertType;
  */
 public class Student{
 
+    public Student(String name, String email, String phone) {
+        
+    }
+
+    
+
     
     
     private void showAlert() {
