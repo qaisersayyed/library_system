@@ -48,11 +48,11 @@ public class Book {
     }
 
     public GridPane getGp() {
-        return gp;
+        return gpb;
     }
 
     public void setGp(GridPane gp) {
-        this.gp = gp;
+        this.gpb = gp;
     }
 
     public Button getButton1() {
@@ -136,7 +136,7 @@ public class Book {
     }
     
    
-        GridPane gp;
+        GridPane gpb;
         Button button1;
         Label nameplate;
         Label name;
@@ -166,25 +166,25 @@ public class Book {
      
    
 
-        gp= new GridPane();
+        gpb= new GridPane();
         
-        gp.add(nameplate,2,1);
-        gp.add(name, 2, 2);
-        gp.add(name1, 3, 2);
-        gp.add(isbn, 2, 3);
-        gp.add(isbn1, 3, 3);
-        gp.add(author, 2, 4);
-        gp.add(author1, 3, 4);
-        gp.add(publisher, 2, 5);
-        gp.add(publisher1,3,5);
-        gp.add(button1,2,6);
+        gpb.add(nameplate,2,1);
+        gpb.add(name, 2, 2);
+        gpb.add(name1, 3, 2);
+        gpb.add(isbn, 2, 3);
+        gpb.add(isbn1, 3, 3);
+        gpb.add(author, 2, 4);
+        gpb.add(author1, 3, 4);
+        gpb.add(publisher, 2, 5);
+        gpb.add(publisher1,3,5);
+        gpb.add(button1,2,6);
         
         
        
 
-        gp.setHgap(10);
-        gp.setVgap(10);
-        gp.setAlignment(Pos.CENTER);
+        gpb.setHgap(10);
+        gpb.setVgap(10);
+        gpb.setAlignment(Pos.CENTER);
         //gp.setPadding(new Insets(40, 40, 40, 40));
         //Scene gpscene = new Scene(gridPane,500,300);
        
