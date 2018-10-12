@@ -54,6 +54,63 @@ public class ReturnForm {
         Label book_id;
         TextField studentid;
         TextField bookid;
+
+    public GridPane getGpreturn() {
+        return gpreturn;
+    }
+
+    public void setGpreturn(GridPane gpreturn) {
+        this.gpreturn = gpreturn;
+    }
+
+    public Button getButton1() {
+        return button1;
+    }
+
+    public void setButton1(Button button1) {
+        this.button1 = button1;
+    }
+
+    public Label getButton() {
+        return button;
+    }
+
+    public void setButton(Label button) {
+        this.button = button;
+    }
+
+    public Label getStudent_id() {
+        return student_id;
+    }
+
+    public void setStudent_id(Label student_id) {
+        this.student_id = student_id;
+    }
+
+    public Label getBook_id() {
+        return book_id;
+    }
+
+    public void setBook_id(Label book_id) {
+        this.book_id = book_id;
+    }
+
+    public TextField getStudentid() {
+        return studentid;
+    }
+
+    public void setStudentid(TextField studentid) {
+        this.studentid = studentid;
+    }
+
+    public TextField getBookid() {
+        return bookid;
+    }
+
+    public void setBookid(TextField bookid) {
+        this.bookid = bookid;
+    }
+    
     
     public ReturnForm(){
         
@@ -104,8 +161,8 @@ public class ReturnForm {
                     
                     Database d = new Database();
                     Connection con = d.openConnection();
-                    Borrow borrow = new Borrow(s_id,b_id);
-                    borrow.insertreturn(con);
+                    Borrow borrow1 = new Borrow(s_id,b_id);
+                    borrow1.insertreturn(con);
                     
                     showAlert();
                     

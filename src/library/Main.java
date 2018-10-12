@@ -27,13 +27,13 @@ public class Main extends Application {
         TabPane tp = new TabPane();
         Tab tab1 = new Tab();
         Tab tab2 = new Tab();
-        Tab tab3 = new Tab();
+            Tab tab3 = new Tab();
         Tab tab4 = new Tab();
         
-        tab1.setText("Student");
-        tab2.setText("Books");
-        tab3.setText("Borrow");
-        tab4.setText("Return");
+        tab1.setText("      Student     ");
+        tab2.setText("      Books       ");
+        tab3.setText("      Borrow      ");
+        tab4.setText("      Return      ");
         
         
         
@@ -53,18 +53,19 @@ public class Main extends Application {
         BorrowForm bf = new BorrowForm();
         GridPane borrowgp = bf.getGpborrow();
         
+        ReturnForm rf = new ReturnForm();
+        GridPane returngp = rf.getGpreturn();
+        
+        
         tab1.setContent(studentgp);
         tab2.setContent(bookgp);
         tab3.setContent(borrowgp);
+        tab4.setContent(returngp);
        
        Scene sc = new Scene(tp, 500, 300); 
-       // tp.tabClosingPolicyProperty(TabClosingPolicy.UNAVAILABLE);
-       
-        tab1.setOnCloseRequest(e -> e.consume());
-        tab2.setOnCloseRequest(e -> e.consume());
-        tab3.setOnCloseRequest(e -> e.consume());
-        tab4.setOnCloseRequest(e -> e.consume());
-        // set the scene 
+      //  tp.tabClosingPolicyProperty(TabClosingPolicy.UNAVAILABLE);
+       tp.setTabClosingPolicy(UNAVAILABLE);
+      
         primaryStage.setScene(sc); 
   
         primaryStage.show(); 
