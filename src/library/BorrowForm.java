@@ -8,18 +8,26 @@ package library;
 
 import Database.Borrow;
 import Database.Database;
+
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 /**
  *
@@ -103,6 +111,15 @@ public class BorrowForm {
     public void setBookid(TextField bookid) {
         this.bookid = bookid;
     }
+
+    public HBox getHb() {
+        return hb;
+    }
+
+    public void setHb(HBox hb) {
+        this.hb = hb;
+    }
+    
     
     
         GridPane gpborrow;
@@ -112,8 +129,9 @@ public class BorrowForm {
         Label book_id;
         TextField studentid;
         TextField bookid;
+        HBox hb;
         
-        public BorrowForm(){
+        public BorrowForm() throws SQLException, ClassNotFoundException{
             
             button1 = new Button("Borrow");
             button =new Label("Borrow book");
@@ -121,6 +139,30 @@ public class BorrowForm {
             book_id = new Label("Book ID");
             studentid = new TextField();
             bookid = new TextField();
+            
+        TableView t = new TableView();
+        Database d = new Database();
+        Connection con = d.openConnection();
+        ObservableList<Borrow> borrowarray = Borrow.getborrow(con);
+        
+        
+        TableColumn <Integer,Borrow> tid = new TableColumn("id");
+        tid.setCellValueFactory(new PropertyValueFactory("id"));
+        
+        TableColumn <Integer,Borrow> tstudent = new TableColumn("student_id");
+        tstudent.setCellValueFactory(new PropertyValueFactory("s_id"));
+        
+        TableColumn <Integer,Borrow> tbook = new TableColumn("book_id");
+        tbook.setCellValueFactory(new PropertyValueFactory("b_id"));
+        
+        
+        TableColumn <Timestamp,Borrow> tborrow = new TableColumn("borrowed on");
+        tborrow.setCellValueFactory(new PropertyValueFactory("borrow"));
+        
+        
+        t.setItems(borrowarray);
+        t.getColumns().addAll(tid,tstudent,tbook,tborrow);
+        t.setPrefSize(350,300);
             
             
             gpborrow= new GridPane();
@@ -132,6 +174,9 @@ public class BorrowForm {
             gpborrow.add(bookid, 3, 3);
             gpborrow.add(button1, 2, 4);
            
+            
+            hb = new HBox(gpborrow,t);
+            hb.setSpacing(20);
             gpborrow.setHgap(10);
             gpborrow.setVgap(10);
             gpborrow.setAlignment(Pos.CENTER);

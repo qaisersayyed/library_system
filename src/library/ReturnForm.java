@@ -9,16 +9,22 @@ import Database.Borrow;
 import Database.Database;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 /**
  *
@@ -54,6 +60,15 @@ public class ReturnForm {
         Label book_id;
         TextField studentid;
         TextField bookid;
+        HBox hb;
+
+    public HBox getHb() {
+        return hb;
+    }
+
+    public void setHb(HBox hb) {
+        this.hb = hb;
+    }
 
     public GridPane getGpreturn() {
         return gpreturn;
@@ -112,7 +127,7 @@ public class ReturnForm {
     }
     
     
-    public ReturnForm(){
+    public ReturnForm() throws ClassNotFoundException, SQLException{
         
         button1 = new Button("Return");
         button =new Label("RETURN BOOK");
@@ -120,6 +135,30 @@ public class ReturnForm {
         book_id = new Label("Book ID");
         studentid = new TextField();
         bookid = new TextField();
+        
+        TableView t = new TableView();
+        Database d = new Database();
+        Connection con = d.openConnection();
+        ObservableList<Borrow> returnarray = Borrow.getreturn(con);
+        
+        
+        TableColumn <Integer,Borrow> tid = new TableColumn("id");
+        tid.setCellValueFactory(new PropertyValueFactory("id"));
+        
+        TableColumn <Integer,Borrow> tstudent = new TableColumn("student_id");
+        tstudent.setCellValueFactory(new PropertyValueFactory("s_id"));
+        
+        TableColumn <Integer,Borrow> tbook = new TableColumn("book_id");
+        tbook.setCellValueFactory(new PropertyValueFactory("b_id"));
+        
+        
+        TableColumn <Timestamp,Borrow> tborrow = new TableColumn("returned on");
+        tborrow.setCellValueFactory(new PropertyValueFactory("borrow"));
+        
+        
+        t.setItems(returnarray);
+        t.getColumns().addAll(tid,tstudent,tbook,tborrow);
+        t.setPrefSize(350,300);
 
 
         gpreturn= new GridPane();
@@ -130,7 +169,9 @@ public class ReturnForm {
         gpreturn.add(book_id, 2, 3);
         gpreturn.add(bookid, 3, 3);
         gpreturn.add(button1, 2, 4);
-
+        
+         hb = new HBox(gpreturn,t);
+         hb.setSpacing(20);
         gpreturn.setHgap(10);
         gpreturn.setVgap(10);
         gpreturn.setAlignment(Pos.CENTER);

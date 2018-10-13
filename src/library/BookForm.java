@@ -11,14 +11,18 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 /**
  *
@@ -47,13 +51,6 @@ public class BookForm {
         alert.showAndWait();
     }
 
-    public GridPane getGp() {
-        return gpb;
-    }
-
-    public void setGp(GridPane gp) {
-        this.gpb = gp;
-    }
 
     public Button getButton1() {
         return button1;
@@ -135,6 +132,21 @@ public class BookForm {
         this.publisher1 = publisher1;
     }
     
+    public GridPane getGpb() {
+        return gpb;
+    }
+
+    public void setGpb(GridPane gpb) {
+        this.gpb = gpb;
+    }
+
+    public HBox getHb() {
+        return hb;
+    }
+
+    public void setHb(HBox hb) {
+        this.hb = hb;
+    }
    
         GridPane gpb;
         Button button1;
@@ -147,10 +159,11 @@ public class BookForm {
         TextField isbn1;
         TextField author1;
         TextField publisher1;
-        
+        HBox hb;
+
     
     
-  public BookForm(){
+  public BookForm() throws ClassNotFoundException, SQLException{
         
         button1 = new Button("Submit");
         nameplate =new Label("ADD BOOK");
@@ -163,7 +176,27 @@ public class BookForm {
         author1 = new TextField();
         publisher1 = new TextField();
         
-     
+        //Table
+        TableView t = new TableView();
+        Database d = new Database();
+        Connection con = d.openConnection();
+        ObservableList<Book> bookarray = Book.Getbook(con);
+        
+        TableColumn <String,Book> bname = new TableColumn("Name");
+        bname.setCellValueFactory(new PropertyValueFactory("name"));
+        
+        TableColumn <String,Book> bisbn = new TableColumn("ISBN");
+        bisbn.setCellValueFactory(new PropertyValueFactory("isbn"));
+        
+        TableColumn <Integer,Book> bauthor = new TableColumn("Author");
+        bauthor.setCellValueFactory(new PropertyValueFactory("author"));
+        
+        TableColumn <Integer,Book> bpublisher = new TableColumn("Publisher");
+        bpublisher.setCellValueFactory(new PropertyValueFactory("publisher"));
+        
+        t.setItems(bookarray);
+        t.getColumns().addAll(bname,bisbn,bauthor,bpublisher);
+        t.setPrefSize(350,300);
    
 
         gpb= new GridPane();
@@ -179,12 +212,13 @@ public class BookForm {
         gpb.add(publisher1,3,5);
         gpb.add(button1,2,6);
         
-        
+        hb = new HBox(gpb,t);
+        hb.setSpacing(20);
        
 
         gpb.setHgap(10);
         gpb.setVgap(10);
-        gpb.setAlignment(Pos.CENTER);
+     //   gpb.setAlignment(Pos.CENTER);
         //gp.setPadding(new Insets(40, 40, 40, 40));
         //Scene gpscene = new Scene(gridPane,500,300);
        

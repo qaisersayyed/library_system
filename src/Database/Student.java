@@ -4,15 +4,15 @@
  * and open the template in the editor.
  */
 package Database;
-import java.sql.Array;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import library.StudentForm;
-import library.StudentTable;
+
+
 
 /**
  *
@@ -70,16 +70,16 @@ public void insertstudent(Connection con) throws SQLException {
 
     }
 //Student s = new StudentForm();
-public static ArrayList<Student> getstudent(Connection con) throws SQLException{
-    ArrayList studentArray = new ArrayList();
+public static ObservableList<Student> getstudent(Connection con) throws SQLException{
+    ObservableList studentArray = FXCollections.observableArrayList();
     String sql = "select * from student;";
     PreparedStatement ps =con.prepareStatement(sql);
     ResultSet rs = ps.executeQuery();
     while (rs.next()){
-        
-        String name = rs.getString(1);
-        String email = rs.getString(2);
-        String phone = rs.getString(3);
+        int id = rs.getInt(1);
+        String name = rs.getString(2);
+        String email = rs.getString(3);
+        String phone = rs.getString(4);
         Student s = new Student(name,email,phone);
         studentArray.add(s);
         
