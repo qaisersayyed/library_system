@@ -152,12 +152,12 @@ public class ReturnForm {
         tbook.setCellValueFactory(new PropertyValueFactory("b_id"));
         
         
-        TableColumn <Timestamp,Borrow> tborrow = new TableColumn("returned on");
-        tborrow.setCellValueFactory(new PropertyValueFactory("borrow"));
+     //   TableColumn <Timestamp,Borrow> tborrow = new TableColumn("returned on");
+       // tborrow.setCellValueFactory(new PropertyValueFactory("borrow"));
         
         
         t.setItems(returnarray);
-        t.getColumns().addAll(tid,tstudent,tbook,tborrow);
+        t.getColumns().addAll(tid,tstudent,tbook);
         t.setPrefSize(350,300);
 
 

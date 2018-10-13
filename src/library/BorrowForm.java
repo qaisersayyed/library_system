@@ -156,12 +156,12 @@ public class BorrowForm {
         tbook.setCellValueFactory(new PropertyValueFactory("b_id"));
         
         
-        TableColumn <Timestamp,Borrow> tborrow = new TableColumn("borrowed on");
-        tborrow.setCellValueFactory(new PropertyValueFactory("borrow"));
+      //  TableColumn <Timestamp,Borrow> tborrow = new TableColumn("borrowed on");
+        //tborrow.setCellValueFactory(new PropertyValueFactory("borrow"));
         
         
         t.setItems(borrowarray);
-        t.getColumns().addAll(tid,tstudent,tbook,tborrow);
+        t.getColumns().addAll(tid,tstudent,tbook);
         t.setPrefSize(350,300);
             
             

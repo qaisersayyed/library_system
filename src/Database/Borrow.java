@@ -34,7 +34,7 @@ public class Borrow {
         this.id=id;
         
     }
-    public Borrow(int id,int s_id,int b_id,Timestamp borrow){
+    public Borrow(int id,int s_id,int b_id){
         this.s_id=s_id;
         this.b_id=b_id;
         this.id=id;
@@ -73,9 +73,9 @@ public class Borrow {
         int id = rs1.getInt(1);
         int student_id = rs1.getInt(2);
         int book_id = rs1.getInt(3);
-        Timestamp borrowed_on = rs1.getTimestamp(4);
-        String returned_on = rs1.getString(5);
-        Borrow b = new Borrow(id,student_id,book_id,borrowed_on);
+      //  Timestamp borrowed_on = rs1.getTimestamp(4);
+      //  String returned_on = rs1.getString(5);
+        Borrow b = new Borrow(id,student_id,book_id);
         borrowArray.add(b);
         
        
@@ -96,9 +96,9 @@ public class Borrow {
         int id = rs.getInt(1);
         int student_id = rs.getInt(2);
         int book_id = rs.getInt(3);
-        Timestamp returned_on = rs.getTimestamp(5);
-        Borrow b = new Borrow(id,student_id,book_id,returned_on);
-        returnArray.add(b);
+        //Timestamp returned_on = rs.getTimestamp(5);
+        Borrow c = new Borrow(id,student_id,book_id);
+        returnArray.add(c);
         
        
         
